@@ -6,7 +6,7 @@
 TltNode::TltNode(ros::NodeHandle private_nh){
 
     // Publishers
-    pub_column_pose_ = private_nh.advertise<sensor_msgs::JointState>("joint_states", 1000);
+    pub_column_pose_ = private_nh.advertise<sensor_msgs::JointState>("value", 1000);
 
     // Variables
     string port;
@@ -18,9 +18,9 @@ TltNode::TltNode(ros::NodeHandle private_nh){
 
 
     // Subscribers
-    sub_column_size_ = private_nh.subscribe("/ewellix/size", 1, &TltNode::cbColumnSize,this);
-    sub_column_duration_up_ = private_nh.subscribe("/ewellix/duration_up", 1, &TltNode::cbDurationUp,this);
-    sub_column_duration_down_ = private_nh.subscribe("/ewellix/duration_down", 1, &TltNode::cbDurationDown,this);
+    sub_column_size_ = private_nh.subscribe("command", 1, &TltNode::cbColumnSize,this);
+    sub_column_duration_up_ = private_nh.subscribe("duration_up", 1, &TltNode::cbDurationUp,this);
+    sub_column_duration_down_ = private_nh.subscribe("duration_down", 1, &TltNode::cbDurationDown,this);
     sub_joy_ = private_nh.subscribe("/joy", 1, &TltNode::cbJoy,this);
     
     
