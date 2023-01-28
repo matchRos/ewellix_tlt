@@ -6,7 +6,7 @@
 TltNode::TltNode(ros::NodeHandle private_nh){
 
     // Publishers
-    pub_column_pose_ = private_nh.advertise<sensor_msgs::JointState>("value", 1000);
+    pub_column_pose_ = private_nh.advertise<sensor_msgs::JointState>("joint_states", 1000);
 
     // Variables
     string port;
