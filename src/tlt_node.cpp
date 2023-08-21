@@ -11,10 +11,12 @@ TltNode::TltNode(ros::NodeHandle private_nh){
     // Variables
     string port;
     int baudrate;
+    string joint_name;
 
     // Parameters
     private_nh.param<string>("ewellix/port", port, "/dev/ttyUSB0");
     private_nh.param<int>("ewellix/baudrate", baudrate, 38400);
+    private_nh.param<string>("ewellix/joint_name", joint_name, "ewellix_lift_top_joint");
 
 
     // Subscribers
@@ -62,7 +64,7 @@ void TltNode::publishJoinStates(){
         joint_states.header.frame_id = "";
         joint_states.header.stamp = ros::Time::now();
         joint_states.name.resize(1);
-        joint_states.name[0] = "ewellix_lift_top_joint";
+        joint_states.name[0] = joint_name;
         joint_states.position.resize(1);
         joint_states.position[0] = srl_.current_pose_;
         pub_column_pose_.publish(joint_states);
