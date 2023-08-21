@@ -11,7 +11,6 @@ TltNode::TltNode(ros::NodeHandle private_nh){
     // Variables
     string port;
     int baudrate;
-    string joint_name;
 
     // Parameters
     private_nh.param<string>("ewellix/port", port, "/dev/ttyUSB0");

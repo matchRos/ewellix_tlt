@@ -25,6 +25,9 @@ private:
     SerialComTlt srl_;
     thread com_thread_;
     thread join_states_thread_;
+
+    string joint_name;
+    
     // Publishers
     ros::Publisher pub_column_pose_;
 
