@@ -22,7 +22,7 @@ TltNode::TltNode(ros::NodeHandle private_nh){
     sub_column_size_ = private_nh.subscribe("command", 1, &TltNode::cbColumnSize,this);
     sub_column_duration_up_ = private_nh.subscribe("duration_up", 1, &TltNode::cbDurationUp,this);
     sub_column_duration_down_ = private_nh.subscribe("duration_down", 1, &TltNode::cbDurationDown,this);
-    sub_joy_ = private_nh.subscribe("/joy", 1, &TltNode::cbJoy,this);
+    sub_joy_ = private_nh.subscribe("/joy_ewellix", 1, &TltNode::cbJoy,this);
     
     
     cout << "connecting to serial " << port << " at baud rate " << baudrate <<endl;
@@ -85,8 +85,7 @@ void TltNode::cbDurationDown( std_msgs::Int16 msg){
 
 void TltNode::cbJoy( sensor_msgs::Joy msg){
 
-    srl_.go_up_ = msg.buttons[13];
-    srl_.go_down_ = msg.buttons[14];
+    return ;
 
 }
 
